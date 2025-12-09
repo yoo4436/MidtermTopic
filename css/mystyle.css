@@ -32,3 +32,13 @@ div>.pp {
 .topnav a.active {
   border-bottom: 3px solid red;
 }
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.pstart {
+  text-indent: 2rem;
+}
