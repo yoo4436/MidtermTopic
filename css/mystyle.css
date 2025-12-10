@@ -46,11 +46,78 @@ div>.pp {
 /* Bottom right text */
 .text-block {
   position: absolute;
-  bottom: 100px;
-  left: 80px;
+  bottom: 18%;
+  left: 6%;
   background-color: white;
   color: black;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 3%;
+  width: 400px; 
+  height: 330px;
+}
+
+@media (1200px <= width <= 1399.98px) {
+  .text-block {
+    position: absolute;
+    bottom: 15%;
+    left: 4%;
+    background-color: white;
+    color: black;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    width: 350px; 
+    height: 330px;
+  }
+}
+
+@media (992px <= width <= 1199.98px) {
+  .text-block {
+    position: absolute;
+    bottom: 14%;
+    left: 3%;
+    background-color: white;
+    color: black;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    width: 300px; 
+    height: 300px;
+  }
+}
+
+/* @media (768px <= width <= 991.98px) {
+  .text-block {
+    position: absolute;
+    bottom: 14%;
+    left: 3%;
+    background-color: white;
+    color: black;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    width: 240px; 
+    height: 240px;
+  }
+} */
+
+@media (max-width: 991.98px) {
+  .text-block {
+    position: relative;  /* 改回相對定位，這樣就會乖乖排在圖片下面 */
+    width: 100%;         /* 寬度撐滿 */
+    height: auto;        /* 高度設為自動，隨文字內容多寡調整 */
+    bottom: auto;        /* 清除底部定位 */
+    left: auto;          /* 清除左側定位 */
+    margin-top: -5px;    /* 微調：消除圖片與文字區塊間可能的縫隙 */
+    border-radius: 0 0 5px 5px; /* 下方圓角保留，上方變直角以貼合圖片 */
+    padding: 20px;       /* 增加一點內距讓文字好看 */
+  }
+  
+  /* 讓原本右下角的按鈕恢復正常排列，不要擠在右邊 */
+  .onright {
+    position: relative;
+    text-align: right;   /* 讓按鈕靠右 */
+    margin-top: 1rem;
+  }
 }
