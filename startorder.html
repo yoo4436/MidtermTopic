@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
@@ -12,17 +12,56 @@
     <link rel="icon" href="./mc_img/MC_Logo_Small.jpg">
     <style>
         body {
-            background-color: white;
+            background-color: #f8f9fa; /* 背景稍微改灰一點點，讓白色卡片更明顯 */
         }
 
         div>.pp {
             color: white;
         }
 
-        /* #sec{
-            position: relative;
-            top: 70px;
-        } */
+        /* 讓商品圖片統一高度，避免卡片長短不一 */
+        .card-img-top {
+            height: 160px;
+            object-fit: contain; /* 保持圖片比例，不會被切到 */
+            padding: 10px;
+        }
+
+        /* 卡片懸停效果 */
+        .hover-shadow:hover {
+            transform: translateY(-3px);
+            transition: all 0.3s ease;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+
+        /* 右側購物車固定效果 */
+        .sticky-cart {
+            position: sticky;
+            top: 20px; /* 距離視窗頂部的距離 */
+            height: calc(100vh - 40px); /* 讓購物車高度剛好填滿視窗 */
+            overflow-y: auto; /* 內容太多時產生捲軸 */
+            z-index: 900;
+        }
+
+        /* 數量增減按鈕樣式 */
+        .btn-quantity {
+            width: 25px;
+            height: 25px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* 分類按鈕滾動條隱藏 (美觀) */
+        .category-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        .category-scroll::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -117,31 +156,63 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">關於麥當勞</a>
                     </li>
-                    <!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li> -->
                 </ul>
             </div>
-            <!-- <button type="button" class="btn btn-danger me-3">立即加入</button>
-            <button type="button" class="shadow btn-outline-black btn btn-black"
-                style="color: black; border: 1px solid white;">登入</button> -->
         </div>
     </nav>
 
-    <!-- <div class="shadow fixed-top bg-white p-3 d-flex justify-content-end gap-2">
-        <div>
+    <div class="container" style="padding-top: 20px; padding-bottom: 50px;" id="sec">
+        <h1 class="text-center mb-4 fw-bold">線上點餐</h1>
 
-            <a href="">Back to mainweb<img src="mc_img/MCLogo.png" alt="MainLogo"></a>
+        <div class="row">
+            
+            <div class="col-lg-8">
+                <div class="d-flex overflow-auto mb-3 gap-2 pb-2 category-scroll" id="category-buttons">
+                    <button class="btn btn-warning rounded-pill text-nowrap active fw-bold" onclick="filterMenu('all')">全部</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('breakfast')">早餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('cpseries')">超值系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('selected')">極選系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('setmeal')">超值配餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('happymeal')">Happy Meal</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('sharebox')">分享盒</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('oneplusone')">1+1星級點</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('mcafe')">McCafé</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('beverage')">飲料</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('dessert')">點心</button>
+                </div>
+
+                <div class="row g-3" id="product-list">
+                    </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="card shadow border-0 sticky-cart">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0"><i class="bi bi-cart4 me-2"></i>我的餐點</h5>
+                    </div>
+                    <div class="card-body d-flex flex-column p-0">
+                        
+                        <div id="cart-items" class="flex-grow-1 overflow-auto p-3" style="min-height: 200px;">
+                            <div class="text-center text-muted mt-5">
+                                <i class="bi bi-basket display-1 opacity-50"></i>
+                                <p class="mt-2">您的購物車是空的</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-light p-3 border-top">
+                            <div class="d-flex justify-content-between h5 mb-3">
+                                <span>總金額：</span>
+                                <span class="fw-bold text-danger" id="total-price">$0</span>
+                            </div>
+                            <button class="btn btn-warning w-100 py-2 fw-bold shadow-sm" onclick="submitOrder()">
+                                送出訂單 <i class="bi bi-arrow-right-circle ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <button type="button" class="btn btn-danger">立即加入</button>
-        <button type="button" class="btn btn-black" style="color: white; border: 1px solid white;">登入</button>
-    </div> -->
-
-    <div class="container " style="padding: 20px;" id="sec">
-
-        <h1>點餐</h1>
-
-
     </div>
 
     <button type="button" 
@@ -153,28 +224,230 @@
     </button>
 
     <script>
-        // 取得按鈕元素
+        // --- 1. 回到頂部按鈕邏輯 (維持原樣) ---
         let mybutton = document.getElementById("btn-back-to-top");
-
-        // 監聽網頁滾動事件
-        window.onscroll = function () {
-            scrollFunction();
-        };
-
+        window.onscroll = function () { scrollFunction(); };
         function scrollFunction() {
-            // 當卷軸向下滾動超過 200px 時，顯示按鈕
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                 mybutton.style.display = "block";
             } else {
                 mybutton.style.display = "none";
             }
         }
-
-        // 點擊按鈕時觸發的功能
         function backToTop() {
-            // 使用 behavior: 'smooth' 讓滾動有平滑動畫效果
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // --- 2. 點餐系統核心邏輯 ---
+
+        // ★★★ 請在這裡填入你的 50 項商品資料 ★★★
+        // category 對應上面的 filterMenu 參數：
+        // breakfast, cpseries, selected, setmeal, happymeal, sharebox, oneplusone, mcafe, beverage, dessert
+        const menuData = [
+           // --- 早餐 ---
+            { id: "bf1", name: "無敵豬肉滿福堡加蛋", price: 78, category: "breakfast", img: "./mc_menu/foodpic/bf1.avif" },
+            { id: "bf2", name: "豬肉蛋堡", price: 66, category: "breakfast", img: "./mc_menu/foodpic/bf2.avif" },
+            { id: "bf3", name: "鬆餅(3片)", price: 59, category: "breakfast", img: "./mc_menu/foodpic/bf3.avif" },
+            { id: "bf4", name: "巧克力榛果可頌", price: 50, category: "breakfast", img: "./mc_menu/foodpic/bf4.avif" },
+            { id: "bf5", name: "雞塊鬆餅大早餐", price: 115, category: "breakfast", img: "./mc_menu/foodpic/bf5.avif" },
+            { id: "bf6", name: "番茄嫩蛋焙果堡", price: 71, category: "breakfast", img: "./mc_menu/foodpic/bf6.avif" },
+            
+            // --- 超值系列 ---
+            { id: "cp1", name: "大麥克", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp1.avif" },
+            { id: "cp2", name: "雙層牛肉吉事堡", price: 75, category: "cpseries", img: "./mc_menu/foodpic/cp2.avif" },
+            { id: "cp3", name: "四盎司牛肉堡", price: 95, category: "cpseries", img: "./mc_menu/foodpic/cp3.avif" },
+            { id: "cp4", name: "雙層四盎司牛肉堡", price: 135, category: "cpseries", img: "./mc_menu/foodpic/cp4.avif" },
+            { id: "cp5", name: "勁辣鷄腿堡", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp5.avif" },
+            { id: "cp6", name: "麥克鷄塊(10塊)", price: 110, category: "cpseries", img: "./mc_menu/foodpic/cp6.avif" },
+            
+            // --- 極選系列 ---
+            { id: "se1", name: "蕈菇安格斯牛肉堡", price: 135, category: "selected", img: "./mc_menu/foodpic/signature1.avif" },
+            { id: "se2", name: "帕瑪森主廚鷄腿堡", price: 130, category: "selected", img: "./mc_menu/foodpic/signature2.avif" },
+            { id: "se3", name: "BLT 安格斯牛肉堡", price: 125, category: "selected", img: "./mc_menu/foodpic/signature3.avif" },
+           
+            // --- 超值配餐 ---
+            { id: "sm1", name: "經典配餐:中薯+$38冷/熱飲", price: 65, category: "setmeal", img: "./mc_menu/foodpic/set1.avif" },
+            { id: "sm2", name: "清爽配餐:沙拉+$38冷/熱飲", price: 70, category: "setmeal", img: "./mc_menu/foodpic/set2.avif" },
+            { id: "sm3", name: "勁脆配餐:鷄腿1塊+$38冷/熱飲", price: 84, category: "setmeal", img: "./mc_menu/foodpic/set3.avif" },
+            { id: "sm4", name: "炫冰配餐:OREO冰炫風®+小薯+$38冷/熱飲", price: 99, category: "setmeal", img: "./mc_menu/foodpic/set4.avif" },
+            { id: "sm5", name: "豪吃配餐:六塊麥克鷄塊+小薯+$38冷/熱飲", price: 99, category: "setmeal", img: "./mc_menu/foodpic/set5.avif" },
+
+            // --- Happy Meal ---
+            { id: "hm1", name: "四塊麥克鷄塊 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm1.avif" },
+            { id: "hm2", name: "漢堡 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm2.avif" },
+            { id: "hm3", name: "陽光鱈魚堡 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm3.avif" },
+
+            // --- 分享盒 ---
+            { id: "sb1", name: "麥克鷄塊分享盒(20塊)", price: 275, category: "sharebox", img: "./mc_menu/foodpic/share1.avif" },
+            { id: "sb2", name: "麥脆鷄腿分享盒(6塊)", price: 508, category: "sharebox", img: "./mc_menu/foodpic/share2.avif" },
+            { id: "sb3", name: "鷄塊鷄腿分享盒", price: 601, category: "sharebox", img: "./mc_menu/foodpic/share3.avif" },
+            
+            // --- 1+1星級點 ---
+            { id: "op1", name: "吉事漢堡+紅茶(熱)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one1.avif" },
+            { id: "op2", name: "鷄塊(4塊)+無糖綠茶(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one2.avif" },
+            { id: "op3", name: "大蛋捲冰淇淋+無糖綠茶(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one3.avif" },
+            { id: "op4", name: "勁辣香鷄翅(兩塊)+雪碧(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one4.avif" },
+            { id: "op5", name: "麥香魚+雪碧(小)", price: 69, category: "oneplusone", img: "./mc_menu/foodpic/one5.avif" },
+            { id: "op6", name: "麥克雙牛堡+檸檬風味紅茶(小)", price: 69, category: "oneplusone", img: "./mc_menu/foodpic/one6.avif" },
+
+            // --- McCafé ---
+            { id: "mc1", name: "經典那堤(冰)", price: 78, category: "mcafe", img: "./mc_menu/foodpic/cafe1.avif" },
+            { id: "mc2", name: "經典卡布奇諾(冰)", price: 78, category: "mcafe", img: "./mc_menu/foodpic/cafe2.avif" },
+            { id: "mc3", name: "經典美式咖啡(冰)", price: 65, category: "mcafe", img: "./mc_menu/foodpic/cafe3.avif" },
+            { id: "mc4", name: "蜂蜜奶茶(冰)", price: 69, category: "mcafe", img: "./mc_menu/foodpic/cafe4.avif" },
+            { id: "mc5", name: "蜂蜜紅茶(冰)", price: 59, category: "mcafe", img: "./mc_menu/foodpic/cafe5.avif" },
+            { id: "mc6", name: "義式濃縮咖啡(熱)", price: 89, category: "mcafe", img: "./mc_menu/foodpic/cafe6.avif" },
+
+            // --- 飲料 ---
+            { id: "dr1", name: "Evian 礦泉水", price: 51, category: "beverage", img: "./mc_menu/foodpic/drink1.avif" },
+            { id: "dr2", name: "鮮乳(盒裝)", price: 33, category: "beverage", img: "./mc_menu/foodpic/drink2.webp" },
+            { id: "dr3", name: "台灣鮮榨柳丁汁(瓶裝)", price: 69, category: "beverage", img: "./mc_menu/foodpic/drink3.avif" },
+            { id: "dr4", name: "可口可樂(中)", price: 38, category: "beverage", img: "./mc_menu/foodpic/drink4.avif" },
+            { id: "dr5", name: "雪碧(中)", price: 38, category: "beverage", img: "./mc_menu/foodpic/drink5.avif" },
+            { id: "dr6", name: "無糖綠茶 (冰)", price: 44, category: "beverage", img: "./mc_menu/foodpic/drink6.avif" },
+
+             // --- 範例：點心 ---
+            { id: "sn1", name: "水果袋", price: 43, category: "dessert", img: "./mc_menu/foodpic/de1.avif" },
+            { id: "sn2", name: "玉米湯", price: 46, category: "dessert", img: "./mc_menu/foodpic/de2.avif" },
+            { id: "sn3", name: "OREO冰炫風", price: 60, category: "dessert", img: "./mc_menu/foodpic/de3.avif" },
+            { id: "sn4", name: "大蛋捲冰淇淋", price: 32, category: "dessert", img: "./mc_menu/foodpic/de4.avif" },
+            { id: "sn5", name: "四季沙拉", price: 56, category: "dessert", img: "./mc_menu/foodpic/de5.avif" },
+            { id: "sn6", name: "奶昔(香草風味)", price: 69, category: "dessert", img: "./mc_menu/foodpic/de6.avif" }
+           
+        ];
+
+        let cart = []; // 購物車陣列
+
+        // 渲染商品列表
+        function renderMenu(filter = 'all') {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // 清空目前顯示
+
+            menuData.forEach(item => {
+                // 篩選分類
+                if (filter !== 'all' && item.category !== filter) return;
+
+                const col = document.createElement('div');
+                col.className = 'col-6 col-md-4 col-lg-3'; // RWD 設定：手機2欄，電腦4欄
+                col.innerHTML = `
+                    <div class="card h-100 border-0 shadow-sm hover-shadow">
+                        <img src="${item.img}" class="card-img-top" alt="${item.name}">
+                        <div class="card-body p-2 d-flex flex-column text-center">
+                            <h6 class="card-title fw-bold" style="font-size: 0.9rem;">${item.name}</h6>
+                            <div class="mt-auto pt-2">
+                                <span class="text-danger fw-bold d-block mb-2">$${item.price}</span>
+                                <button class="btn btn-sm btn-outline-danger w-100 rounded-pill" onclick="addToCart('${item.id}')">
+                                    <i class="bi bi-cart-plus"></i> 加入
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productList.appendChild(col);
+            });
+        }
+
+        // 加入購物車
+        function addToCart(id) {
+            const item = menuData.find(p => p.id === id);
+            const existingItem = cart.find(i => i.id === id);
+
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        // 更新購物車畫面
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const totalEl = document.getElementById('total-price');
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="text-center text-muted mt-5">
+                        <i class="bi bi-basket display-1 opacity-50"></i>
+                        <p class="mt-2">您的購物車是空的</p>
+                    </div>`;
+                totalEl.innerText = "$0";
+                return;
+            }
+
+            let html = '<ul class="list-group list-group-flush">';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                html += `
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
+                        <div class="me-2" style="font-size: 0.9rem; width: 50%;">
+                            <div class="fw-bold text-truncate">${item.name}</div>
+                            <div class="text-muted small">$${item.price}</div>
+                        </div>
+                        <div class="d-flex align-items-center bg-light rounded-pill p-1">
+                            <button class="btn btn-quantity text-danger" onclick="changeQty(${index}, -1)">-</button>
+                            <span class="mx-2 small fw-bold">${item.qty}</span>
+                            <button class="btn btn-quantity text-success" onclick="changeQty(${index}, 1)">+</button>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            
+            cartContainer.innerHTML = html;
+            totalEl.innerText = "$" + total;
+        }
+
+        // 增減數量
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1); // 數量 <= 0 時移除項目
+            }
+            updateCartUI();
+        }
+
+        // 分類切換按鈕效果
+        function filterMenu(category) {
+            // 移除所有按鈕的 active 樣式
+            document.querySelectorAll('#category-buttons button').forEach(btn => {
+                btn.classList.remove('btn-warning', 'active', 'fw-bold');
+                btn.classList.add('btn-outline-dark');
+            });
+            // 替當前點擊的按鈕加上 active 樣式
+            event.target.classList.remove('btn-outline-dark');
+            event.target.classList.add('btn-warning', 'active', 'fw-bold');
+            
+            renderMenu(category);
+        }
+
+        // 送出訂單 (這裡僅作範例，未來可連接 Google Apps Script)
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert("購物車是空的喔！請先選擇餐點。");
+                return;
+            }
+            
+            // 準備資料
+            const orderInfo = {
+                items: cart,
+                total: document.getElementById('total-price').innerText,
+                time: new Date().toLocaleString()
+            };
+
+            console.log("訂單資料：", orderInfo);
+            alert(`訂單已送出！\n總金額：${orderInfo.total}\n(目前為演示模式，尚未連接後端資料庫)`);
+            
+            // 清空購物車 (可選)
+            // cart = [];
+            // updateCartUI();
+        }
+
+        // 頁面載入時先渲染一次全部商品
+        renderMenu();
+
     </script>
 </body>
 
