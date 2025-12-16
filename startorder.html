@@ -209,13 +209,76 @@
 
         // --- 3. 商品資料 ---
         const menuData = [
-            // 為了節省版面，請保留你原本那 50 筆完整的資料
+            // --- 早餐 ---
             { id: "bf1", name: "無敵豬肉滿福堡加蛋", price: 78, category: "breakfast", img: "./mc_menu/foodpic/bf1.avif" },
             { id: "bf2", name: "豬肉蛋堡", price: 66, category: "breakfast", img: "./mc_menu/foodpic/bf2.avif" },
+            { id: "bf3", name: "鬆餅(3片)", price: 59, category: "breakfast", img: "./mc_menu/foodpic/bf3.avif" },
+            { id: "bf4", name: "巧克力榛果可頌", price: 50, category: "breakfast", img: "./mc_menu/foodpic/bf4.avif" },
+            { id: "bf5", name: "雞塊鬆餅大早餐", price: 115, category: "breakfast", img: "./mc_menu/foodpic/bf5.avif" },
+            { id: "bf6", name: "番茄嫩蛋焙果堡", price: 71, category: "breakfast", img: "./mc_menu/foodpic/bf6.avif" },
+            
+            // --- 超值系列 ---
             { id: "cp1", name: "大麥克", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp1.avif" },
+            { id: "cp2", name: "雙層牛肉吉事堡", price: 75, category: "cpseries", img: "./mc_menu/foodpic/cp2.avif" },
+            { id: "cp3", name: "四盎司牛肉堡", price: 95, category: "cpseries", img: "./mc_menu/foodpic/cp3.avif" },
+            { id: "cp4", name: "雙層四盎司牛肉堡", price: 135, category: "cpseries", img: "./mc_menu/foodpic/cp4.avif" },
+            { id: "cp5", name: "勁辣鷄腿堡", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp5.avif" },
+            { id: "cp6", name: "麥克鷄塊(10塊)", price: 110, category: "cpseries", img: "./mc_menu/foodpic/cp6.avif" },
+            
+            // --- 極選系列 ---
+            { id: "se1", name: "蕈菇安格斯牛肉堡", price: 135, category: "selected", img: "./mc_menu/foodpic/signature1.avif" },
+            { id: "se2", name: "帕瑪森主廚鷄腿堡", price: 130, category: "selected", img: "./mc_menu/foodpic/signature2.avif" },
+            { id: "se3", name: "BLT 安格斯牛肉堡", price: 125, category: "selected", img: "./mc_menu/foodpic/signature3.avif" },
+           
+            // --- 超值配餐 ---
+            { id: "sm1", name: "經典配餐:中薯+$38冷/熱飲", price: 65, category: "setmeal", img: "./mc_menu/foodpic/set1.avif" },
+            { id: "sm2", name: "清爽配餐:沙拉+$38冷/熱飲", price: 70, category: "setmeal", img: "./mc_menu/foodpic/set2.avif" },
+            { id: "sm3", name: "勁脆配餐:鷄腿1塊+$38冷/熱飲", price: 84, category: "setmeal", img: "./mc_menu/foodpic/set3.avif" },
+            { id: "sm4", name: "炫冰配餐:OREO冰炫風®+小薯+$38冷/熱飲", price: 99, category: "setmeal", img: "./mc_menu/foodpic/set4.avif" },
+            { id: "sm5", name: "豪吃配餐:六塊麥克鷄塊+小薯+$38冷/熱飲", price: 99, category: "setmeal", img: "./mc_menu/foodpic/set5.avif" },
+
+            // --- Happy Meal ---
+            { id: "hm1", name: "四塊麥克鷄塊 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm1.avif" },
+            { id: "hm2", name: "漢堡 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm2.avif" },
+            { id: "hm3", name: "陽光鱈魚堡 Happy Meal", price: 99, category: "happymeal", img: "./mc_menu/foodpic/hm3.avif" },
+
+            // --- 分享盒 ---
+            { id: "sb1", name: "麥克鷄塊分享盒(20塊)", price: 275, category: "sharebox", img: "./mc_menu/foodpic/share1.avif" },
+            { id: "sb2", name: "麥脆鷄腿分享盒(6塊)", price: 508, category: "sharebox", img: "./mc_menu/foodpic/share2.avif" },
+            { id: "sb3", name: "鷄塊鷄腿分享盒", price: 601, category: "sharebox", img: "./mc_menu/foodpic/share3.avif" },
+            
+            // --- 1+1星級點 ---
+            { id: "op1", name: "吉事漢堡+紅茶(熱)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one1.avif" },
+            { id: "op2", name: "鷄塊(4塊)+無糖綠茶(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one2.avif" },
+            { id: "op3", name: "大蛋捲冰淇淋+無糖綠茶(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one3.avif" },
+            { id: "op4", name: "勁辣香鷄翅(兩塊)+雪碧(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one4.avif" },
+            { id: "op5", name: "麥香魚+雪碧(小)", price: 69, category: "oneplusone", img: "./mc_menu/foodpic/one5.avif" },
+            { id: "op6", name: "麥克雙牛堡+檸檬風味紅茶(小)", price: 69, category: "oneplusone", img: "./mc_menu/foodpic/one6.avif" },
+
+            // --- McCafé ---
+            { id: "mc1", name: "經典那堤(冰)", price: 78, category: "mcafe", img: "./mc_menu/foodpic/cafe1.avif" },
+            { id: "mc2", name: "經典卡布奇諾(冰)", price: 78, category: "mcafe", img: "./mc_menu/foodpic/cafe2.avif" },
+            { id: "mc3", name: "經典美式咖啡(冰)", price: 65, category: "mcafe", img: "./mc_menu/foodpic/cafe3.avif" },
+            { id: "mc4", name: "蜂蜜奶茶(冰)", price: 69, category: "mcafe", img: "./mc_menu/foodpic/cafe4.avif" },
+            { id: "mc5", name: "蜂蜜紅茶(冰)", price: 59, category: "mcafe", img: "./mc_menu/foodpic/cafe5.avif" },
+            { id: "mc6", name: "義式濃縮咖啡(熱)", price: 89, category: "mcafe", img: "./mc_menu/foodpic/cafe6.avif" },
+
+            // --- 飲料 ---
+            { id: "dr1", name: "Evian 礦泉水", price: 51, category: "beverage", img: "./mc_menu/foodpic/drink1.avif" },
+            { id: "dr2", name: "鮮乳(盒裝)", price: 33, category: "beverage", img: "./mc_menu/foodpic/drink2.webp" },
+            { id: "dr3", name: "台灣鮮榨柳丁汁(瓶裝)", price: 69, category: "beverage", img: "./mc_menu/foodpic/drink3.avif" },
             { id: "dr4", name: "可口可樂(中)", price: 38, category: "beverage", img: "./mc_menu/foodpic/drink4.avif" },
-            { id: "sn3", name: "OREO冰炫風", price: 60, category: "dessert", img: "./mc_menu/foodpic/de3.avif" }
-            // ... 請自行補齊其他項目 ...
+            { id: "dr5", name: "雪碧(中)", price: 38, category: "beverage", img: "./mc_menu/foodpic/drink5.avif" },
+            { id: "dr6", name: "無糖綠茶 (冰)", price: 44, category: "beverage", img: "./mc_menu/foodpic/drink6.avif" },
+
+             // --- 範例：點心 ---
+            { id: "sn1", name: "水果袋", price: 43, category: "dessert", img: "./mc_menu/foodpic/de1.avif" },
+            { id: "sn2", name: "玉米湯", price: 46, category: "dessert", img: "./mc_menu/foodpic/de2.avif" },
+            { id: "sn3", name: "OREO冰炫風", price: 60, category: "dessert", img: "./mc_menu/foodpic/de3.avif" },
+            { id: "sn4", name: "大蛋捲冰淇淋", price: 32, category: "dessert", img: "./mc_menu/foodpic/de4.avif" },
+            { id: "sn5", name: "四季沙拉", price: 56, category: "dessert", img: "./mc_menu/foodpic/de5.avif" },
+            { id: "sn6", name: "奶昔(香草風味)", price: 69, category: "dessert", img: "./mc_menu/foodpic/de6.avif" }
+
         ];
 
         let cart = [];
