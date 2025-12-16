@@ -1,326 +1,287 @@
+/* =========================================
+   1. 全域設定 (Global Settings)
+   ========================================= */
 body {
     background-color: white;
 }
 
-div>.pp {
+div > .pp {
     color: white;
 }
 
-
-/* Add a black background color to the top navigation */
-/* .topnav {
-  background-color: #333;
-  overflow: hidden;
-} */
-
-/* Style the links inside the navigation bar */
-/* .topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  border-bottom: 3px solid transparent;
-} */
-
-.topnav a:hover {
-  border-bottom: 3px solid red;
-}
-
-.topnav a.active {
-  border-bottom: 3px solid red;
-}
-
+/* 讓 Container 清除浮動 (Clearfix) */
 .container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
+    content: "";
+    clear: both;
+    display: table;
 }
 
+/* 段落縮排 */
 .pstart {
-  text-indent: 2rem;
+    text-indent: 2rem;
 }
 
-/* Bottom right text */
-.text-block {
-  position: absolute;
-  bottom: 18%;
-  left: 6%;
-  background-color: white;
-  color: black;
-  padding-left: 3%;
-  padding-right: 3%;
-  padding-top: 3%;
-  width: 400px; 
-  height: 330px;
+/* =========================================
+   2. 導覽列與選單 (Navbar & Menu)
+   ========================================= */
+
+/* 連結 hover 效果 */
+.topnav a:hover,
+.topnav a.active {
+    border-bottom: 3px solid red;
 }
 
-@media (1200px <= width <= 1399.98px) {
-  .text-block {
-    position: absolute;
-    bottom: 15%;
-    left: 4%;
-    background-color: white;
-    color: black;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 2%;
-    width: 350px; 
-    height: 330px;
-  }
-}
-
-@media (992px <= width <= 1199.98px) {
-  .text-block {
-    position: absolute;
-    bottom: 14%;
-    left: 3%;
-    background-color: white;
-    color: black;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 2%;
-    width: 300px; 
-    height: 300px;
-  }
-}
-
-/* @media (768px <= width <= 991.98px) {
-  .text-block {
-    position: absolute;
-    bottom: 14%;
-    left: 3%;
-    background-color: white;
-    color: black;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 2%;
-    width: 240px; 
-    height: 240px;
-  }
-} */
-
-.onright {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-}
-
+/* 手機版導覽列排版修正 (< 992px) */
 @media (max-width: 991.98px) {
-  .text-block {
-    position: relative;  /* 改回相對定位，這樣就會乖乖排在圖片下面 */
-    width: 100%;         /* 寬度撐滿 */
-    height: auto;        /* 高度設為自動，隨文字內容多寡調整 */
-    bottom: auto;        /* 清除底部定位 */
-    left: auto;          /* 清除左側定位 */
-    margin-top: -5px;    /* 微調：消除圖片與文字區塊間可能的縫隙 */
-    border-radius: 0 0 5px 5px; /* 下方圓角保留，上方變直角以貼合圖片 */
-    padding: 20px;       /* 增加一點內距讓文字好看 */
-  }
-  
-  /* 讓原本右下角的按鈕恢復正常排列，不要擠在右邊 */
-  .onright {
-    position: relative;
-    text-align: right;   /* 讓按鈕靠右 */
-    margin-top: 1rem;
-    padding-bottom: 5%;
-  }
-}
-
-/* 1. 設定圖片通用規則 */
-.tt {
-    width: 100%;
-    /* 關鍵：使用 cover 模式，讓圖片填滿設定的框框，多餘的會被裁掉，不會變形 */
-    object-fit: cover; 
-    
-    /* 關鍵：設定圖片重心在「右側」 */
-    /* 因為你的漢堡、公仔都在右邊，這樣縮小時會優先保留右邊，裁掉左邊的背景 */
-    object-position: 80% center; 
-}
-
-/* 2. 桌機版 (寬螢幕) */
-/* 這裡設定跟你原圖差不多的扁長比例，例如 21:9 */
-@media (min-width: 992px) {
-    .tt {
-        /* 設定固定的長寬比，瀏覽器在圖片載入前就知道高度，解決 F5 跑版問題 */
-        aspect-ratio: 21 / 9; 
+    .navbar-collapse {
+        text-align: left !important;
+    }
+    .navbar-nav {
+        align-items: flex-start !important;
+        width: 100%;
+    }
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+    .navbar-nav .nav-link {
+        width: 100%;
+        text-align: left;
+        padding-left: 0; 
+    }
+    .dropdown-toggle::after {
+        margin-left: 0.5em;
     }
 }
 
-/* 3. 平板與手機版 (窄螢幕) */
-/* 手機如果用 21:9 會太扁，我們強制改成 16:9 或 4:3 讓它變高一點 */
-@media (max-width: 991.98px) {
-    .tt {
-        /* ★ 強制設定一個高度，不讓它隨寬度縮到太小 ★ */
-        height: 280px !important; 
-        
-        /* 設定重點在「右邊」(因為你的漢堡、公仔、奶昔大哥都在右邊) */
-        /* 這樣左邊的空白背景會被切掉，畫面會像放大鏡一樣聚焦在右邊 */
-        object-position: 85% center;
-    }
-}
-
-.map-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-/* --- 手風琴選單 (電腦手機通用設定) --- */
-
-/* 1. 選單容器樣式 */
+/* --- 手風琴/下拉選單 (Accordion Menu) --- */
 .custom-accordion-menu {
     background-color: white; 
-    border-radius: 0 0 5px 5px; /* 下方圓角 */
+    border-radius: 0 0 5px 5px;
     padding: 15px 0;
-    margin-top: 0; /* 緊貼導覽列 */
+    margin-top: 0;
 }
 
-/* 2. 選項文字樣式 */
 .custom-accordion-menu .dropdown-item {
     color: black; 
     font-weight: bold;
     font-size: 1.1rem;
-    padding: 10px 20px; /* 增加點擊範圍 */
+    padding: 10px 20px;
     transition: 0.2s;
 }
 
-/* 3. 滑鼠移過選項的效果 */
 .custom-accordion-menu .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.2); 
     color: #db0007; 
 }
 
-/* --- 電腦版專用調整 (>= 992px) --- */
+/* 菜單內的小圖片 */
+.menu {
+    width: 10%;
+    height: 10%;
+}
+
+/* 電腦版選單動畫 (>= 992px) */
 @media (min-width: 992px) {
     .custom-accordion-menu {
-        position: absolute; /* 絕對定位：展開時會覆蓋在輪播圖上方 */
+        position: absolute;
         left: 0;
         right: 0;
         width: 100%;
-        animation: slideDown 0.3s ease; /* 展開動畫 */
+        animation: slideDown 0.3s ease;
     }
-    
-    /* 下滑動畫 */
     @keyframes slideDown {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
     }
 }
 
-/* --- 手機版專用調整 (< 992px) --- */
+/* 手機版選單樣式 (< 992px) */
 @media (max-width: 991.98px) {
     .custom-accordion-menu {
-        position: static; /* 靜態定位：這就是「手風琴」效果，會把下方內容往下推 */
-        background-color: #f8f9fa; /* 手機版改回淺灰底 (若想維持紅色可刪除此行) */
-        box-shadow: none !important; /* 移除陰影 */
+        position: static;
+        background-color: #f8f9fa;
+        box-shadow: none !important;
     }
-
-    /* 手機版文字顏色改回深色 (配合淺灰底) */
     .custom-accordion-menu .dropdown-item {
         color: #333;
     }
-    
-    /* 手機版選項 Hover 改為紅色字 */
     .custom-accordion-menu .dropdown-item:hover {
         background-color: transparent;
         color: #db0007;
     }
 }
 
-.menu{
-    width: 10%;
-    height: 10%;
-    /* margin-right: 10px; */
-}
-
-/* 覆蓋 ScrollSpy 激活時的顏色 */
+/* ScrollSpy 激活樣式 (側邊欄) */
 .list-group-item.active {
     z-index: 2;
     color: #fff !important;
-    background-color: #db0007 !important; /* 麥當勞紅 */
+    background-color: #db0007 !important;
     border-color: #db0007 !important;
     font-weight: bold;
 }
 
-/* --- Flip Card 翻轉卡片特效 --- */
+/* =========================================
+   3. 首頁輪播與文字區塊 (Carousel & Text Block)
+   ========================================= */
 
-/* 1. 卡片容器 */
+/* 文字方塊通用設定 */
+.text-block {
+    position: absolute;
+    bottom: 18%;
+    left: 6%;
+    background-color: white;
+    color: black;
+    padding: 3%;
+    width: 400px; 
+    height: 330px;
+}
+
+/* 右下角按鈕 */
+.onright {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+/* 針對不同螢幕尺寸調整文字方塊大小 */
+
+/* 大型螢幕 (1200px ~ 1399px) */
+@media (1200px <= width <= 1399.98px) {
+    .text-block {
+        bottom: 15%;
+        left: 4%;
+        padding: 2%;
+        width: 350px;
+        height: 330px;
+    }
+}
+
+/* 中型螢幕 (992px ~ 1199px) */
+@media (992px <= width <= 1199.98px) {
+    .text-block {
+        bottom: 14%;
+        left: 3%;
+        padding: 2%;
+        width: 300px; 
+        height: 300px;
+    }
+}
+
+/* 手機與平板直向 (< 992px) */
+@media (max-width: 991.98px) {
+    .text-block {
+        position: relative;
+        width: 100%;
+        height: auto;
+        bottom: auto;
+        left: auto;
+        margin-top: -5px;
+        border-radius: 0 0 5px 5px;
+        padding: 20px;
+    }
+    .onright {
+        position: relative;
+        text-align: right;
+        margin-top: 1rem;
+        padding-bottom: 5%;
+        bottom: auto;
+        right: auto;
+    }
+}
+
+/* =========================================
+   4. 圖片與媒體 (Images & Media)
+   ========================================= */
+
+/* 首頁橫幅圖片 (.tt) 通用設定 */
+.tt {
+    width: 100%;
+    object-fit: cover; 
+    object-position: 80% center; 
+}
+
+/* 電腦版圖片比例 */
+@media (min-width: 992px) {
+    .tt {
+        aspect-ratio: 21 / 9; 
+    }
+}
+
+/* 手機版圖片修正 */
+@media (max-width: 991.98px) {
+    .tt {
+        height: 280px !important; 
+        object-position: 85% center;
+    }
+}
+
+/* Google Map 響應式容器 (16:9) */
+.map-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   5. 翻轉卡片特效 (Flip Card)
+   ========================================= */
+
 .flip-card {
-  background-color: transparent;
-  width: 100%;
-  /* 設定長寬比，這裡設 1:1 正方形，也可以改 4/3 或 3/4 */
-  aspect-ratio: 1 / 1; 
-  perspective: 1000px; /* 3D 透視感，數字越小透視感越強 */
-  cursor: pointer;
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-/* 2. 內部容器 (負責翻轉的那個盒子) */
 .flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s; /* 翻轉速度 */
-  transform-style: preserve-3d; /* 保留 3D 空間 */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-/* 3. 觸發翻轉 (滑鼠移入 或 手機點擊) */
 .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-/* 4. 正面與背面共用設定 */
 .flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* 隱藏背面 (關鍵！) */
-  backface-visibility: hidden;
-  border-radius: 10px; /* 圓角 */
-  overflow: hidden; /* 確保圖片不超出圓角 */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* 5. 正面樣式 */
 .flip-card-front {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .flip-card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 確保圖片填滿且不變形 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* 6. 背面樣式 */
-.flip-card-back {
-  background-color: #db0007; /* 麥當勞紅 */
-  color: white;
-  transform: rotateY(180deg); /* 預設先轉 180 度藏在後面 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}
-
-/* 在正面加一個小小的提示圖示 */
+/* 正面提示圖示 */
 .flip-card-front::after {
-    content: "\F134"; /* Bootstrap Icons 的翻轉圖示代碼 */
+    content: "\F134"; /* Bootstrap Icon code */
     font-family: "bootstrap-icons";
     position: absolute;
     bottom: 10px;
@@ -332,44 +293,42 @@ div>.pp {
     font-size: 12px;
 }
 
-/* --- 手機版 Flip Card 修正 (針對寬度小於 768px 的裝置) --- */
+.flip-card-back {
+    background-color: #db0007; /* 麥當勞紅 */
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Flip Card 手機版專用修正 (< 768px) */
 @media (max-width: 768px) {
-    
-    /* 1. 將卡片比例拉長，從正方形(1/1) 改為長方形(3/4) */
-    /* 這樣才有足夠的高度放下文字 */
     .flip-card {
-        aspect-ratio: 3 / 4 !important; 
+        aspect-ratio: 3 / 4 !important; /* 改為長方形以容納文字 */
     }
-
-    /* 2. 減少卡片內部的留白 */
     .flip-card-back {
-        padding: 8px !important; /* 原本可能是 15px */
+        padding: 8px !important;
     }
-
-    /* 3. 縮小標題字體 */
     .flip-card-back h4 {
-        font-size: 1rem; /* 約 16px */
-        margin-bottom: 4px; /* 減少標題下方的空隙 */
-        line-height: 1.2; /* 縮小行高 */
-    }
-
-    /* 4. 縮小內文描述 */
-    .flip-card-back p {
-        font-size: 0.8rem; /* 約 12-13px */
+        font-size: 1rem;
         margin-bottom: 4px;
-        display: -webkit-box; /* 如果文字真的太多，限制顯示行數 */
-        -webkit-line-clamp: 2; /* 最多顯示 2 行 */
+        line-height: 1.2;
+    }
+    .flip-card-back p {
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-
-    /* 5. 調整價格字體 */
     .flip-card-back h3 {
         font-size: 1.2rem;
         margin-bottom: 5px;
     }
-
-    /* 6. 縮小按鈕 */
     .flip-card-back .btn {
         padding: 2px 10px;
         font-size: 0.85rem;
