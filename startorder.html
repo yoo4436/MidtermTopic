@@ -455,7 +455,8 @@
             .then(response => response.json())
             .then(data => {
                 if(data.status === "success"){
-                    alert("✅ 訂單成功！\n後端確認金額:$" + data.serverTotal);
+                    // 顯示訂單編號
+                    alert("✅ 訂單成功！\n\n訂單編號：" + data.orderId + "\n確認金額：$" + data.serverTotal);
                     // 清空購物車
                     cart = [];
                     updateCartUI();
