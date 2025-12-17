@@ -11,16 +11,12 @@
     <script src="./js/bootstrap.bundle.js"></script>
     <link rel="icon" href="./mc_img/MC_Logo_Small.jpg">
     <style>
-        /* #sec{
-            position: relative;
-            top: 70px;
-        } */
         /* 讓點擊連結後的滾動有滑順效果 */
         html {
             scroll-behavior: smooth;
         }
 
-        /* 重要！避免 Navbar 擋住標題 */
+        /* 避免 Navbar 擋住標題 */
         /* 因為你的 Navbar 是固定在上方，直接跳轉會被擋住，這行能增加緩衝距離 */
         section {
             scroll-margin-top: 100px;
@@ -48,66 +44,40 @@
                         </a>
                         <ul class="dropdown-menu w-100 border-0 shadow custom-accordion-menu"
                             aria-labelledby="foodMenu">
-                            <div class="d-flex flex-wrap justify-content-center text-center mx-auto py-3"
-                                style="max-width: 1400px;">
-
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#breakfast">
-                                        <img src="./mc_menu/menu-bf.avif" alt="早餐" class="menu me-2">早餐
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#cpseries">
-                                        <img src="./mc_menu/menu-setmeal.avif" alt="" class="menu me-2">超值系列
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#selectedseries">
-                                        <img src="./mc_menu/menu-super.avif" alt="" class="menu me-2">極選系列
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#setmeal">
-                                        <img src="./mc_menu/menu-subset.webp" alt="" class="menu me-2">超值配餐
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#happymeal">
-                                        <img src="./mc_menu/menu-happymeal.avif" alt="" class="menu me-2">Happy Meal®
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#sharemeal">
-                                        <img src="./mc_menu/menu-sharemeal.avif" alt="" class="menu me-2">麥當勞分享盒
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#oneplusone">
-                                        <img src="./mc_menu/menu-oneplusone.avif" alt="" class="menu me-2">1+1星級點
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#mcafe">
-                                        <img src="./mc_menu/menu-mycoff.avif" alt="" class="menu me-2">McCafé®
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#beverage">
-                                        <img src="./mc_menu/menu-berver.avif" alt="" class="menu me-2">飲料
-                                    </a>
-                                </li>
-                                <li class="p-3">
-                                    <a class="dropdown-item" href="foodmap.html#dessert">
-                                        <img src="./mc_menu/menu-dessert.avif" alt="" class="menu me-2">點心
-                                    </a>
-                                </li>
+                            <div class="row justify-content-center text-center mx-auto py-3" style="max-width: 1400px;">
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#breakfast"><img src="./mc_menu/menu-bf.avif"
+                                            class="menu me-2">早餐</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#cpseries"><img src="./mc_menu/menu-setmeal.avif"
+                                            class="menu me-2">超值系列</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#selectedseries"><img src="./mc_menu/menu-super.avif"
+                                            class="menu me-2">極選系列</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#setmeal"><img
+                                            src="./mc_menu/menu-subset.webp" class="menu me-2">超值配餐</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#happymeal"><img src="./mc_menu/menu-happymeal.avif"
+                                            class="menu me-2">Happy Meal®</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#sharemeal"><img src="./mc_menu/menu-sharemeal.avif"
+                                            class="menu me-2">麥當勞分享盒</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#oneplusone"><img src="./mc_menu/menu-oneplusone.avif"
+                                            class="menu me-2">1+1星級點</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#mcafe"><img
+                                            src="./mc_menu/menu-mycoff.avif" class="menu me-2">McCafé®</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#beverage"><img src="./mc_menu/menu-berver.avif"
+                                            class="menu me-2">飲料</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#dessert"><img
+                                            src="./mc_menu/menu-dessert.avif" class="menu me-2">點心</a></li>
                             </div>
-
                             <li class="w-100">
                                 <hr class="dropdown-divider">
                             </li>
-                            <li class="w-100 pb-3"><a class="dropdown-item text-center" href="foodmap.html">瀏覽全部</a>
-                            </li>
+                            <li class="w-25 pb-3 mx-auto"><a class="dropdown-item text-center"
+                                    href="foodmap.html">瀏覽全部</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -119,25 +89,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">關於麥當勞</a>
                     </li>
-                    <!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li> -->
                 </ul>
             </div>
-            <!-- <button type="button" class="btn btn-danger me-3">立即加入</button>
-            <button type="button" class="shadow btn-outline-black btn btn-black"
-                style="color: black; border: 1px solid white;">登入</button> -->
         </div>
     </nav>
-
-    <!-- <div class="shadow fixed-top bg-white p-3 d-flex justify-content-end gap-2">
-        <div>
-
-            <a href="">Back to mainweb<img src="mc_img/MCLogo.png" alt="MainLogo"></a>
-        </div>
-        <button type="button" class="btn btn-danger">立即加入</button>
-        <button type="button" class="btn btn-black" style="color: white; border: 1px solid white;">登入</button>
-    </div> -->
 
     <div class="container" style="padding: 20px; margin-top: 80px;">
         <h1 class="text-center mb-5">美味一覽</h1>
@@ -1110,15 +1065,11 @@
                         </div>
                     </div>
                 </section>
-
             </div>
-
 
             <div class="col-lg-3 d-none d-lg-block">
                 <div class="sticky-top" style="top: 100px; z-index: 1;">
-
                     <h5 class="mb-3 fw-bold ps-2">快速導覽</h5>
-
                     <div id="simple-list-example" class="list-group shadow-sm">
                         <a class="list-group-item list-group-item-action" href="#breakfast">早餐</a>
                         <a class="list-group-item list-group-item-action" href="#cpseries">超值系列</a>
@@ -1130,13 +1081,11 @@
                         <a class="list-group-item list-group-item-action" href="#mcafe">McCafé®</a>
                         <a class="list-group-item list-group-item-action" href="#beverage">飲料</a>
                         <a class="list-group-item list-group-item-action" href="#dessert">點心</a>
-
                         <div class="border-top my-2"></div>
                         <a href="index.html" class="list-group-item list-group-item-action text-secondary border-0">
                             <i class="bi bi-arrow-left"></i> 回首頁
                         </a>
                     </div>
-
                 </div>
             </div>
 
@@ -1149,7 +1098,6 @@
     </button>
 
     <script>
-        // 取得按鈕元素
         let mybutton = document.getElementById("btn-back-to-top");
 
         // 監聽網頁滾動事件

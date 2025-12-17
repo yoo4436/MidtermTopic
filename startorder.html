@@ -11,14 +11,6 @@
     <script src="./js/bootstrap.bundle.js"></script>
     <link rel="icon" href="./mc_img/MC_Logo_Small.jpg">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        div>.pp {
-            color: white;
-        }
-
         .card-img-top {
             height: 160px;
             object-fit: contain;
@@ -28,7 +20,7 @@
         .hover-shadow:hover {
             transform: translateY(-3px);
             transition: all 0.3s ease;
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
         }
 
         .sticky-cart {
@@ -53,6 +45,7 @@
         .category-scroll::-webkit-scrollbar {
             height: 5px;
         }
+
         .category-scroll::-webkit-scrollbar-thumb {
             background: #ccc;
             border-radius: 10px;
@@ -80,24 +73,44 @@
                         </a>
                         <ul class="dropdown-menu w-100 border-0 shadow custom-accordion-menu"
                             aria-labelledby="foodMenu">
-                            <div class="d-flex flex-wrap justify-content-center text-center mx-auto py-3"
-                                style="max-width: 1400px;">
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#breakfast"><img src="./mc_menu/menu-bf.avif" class="menu me-2">早餐</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#cpseries"><img src="./mc_menu/menu-setmeal.avif" class="menu me-2">超值系列</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#selectedseries"><img src="./mc_menu/menu-super.avif" class="menu me-2">極選系列</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#setmeal"><img src="./mc_menu/menu-subset.webp" class="menu me-2">超值配餐</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#happymeal"><img src="./mc_menu/menu-happymeal.avif" class="menu me-2">Happy Meal®</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#sharemeal"><img src="./mc_menu/menu-sharemeal.avif" class="menu me-2">麥當勞分享盒</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#oneplusone"><img src="./mc_menu/menu-oneplusone.avif" class="menu me-2">1+1星級點</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#mcafe"><img src="./mc_menu/menu-mycoff.avif" class="menu me-2">McCafé®</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#beverage"><img src="./mc_menu/menu-berver.avif" class="menu me-2">飲料</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#dessert"><img src="./mc_menu/menu-dessert.avif" class="menu me-2">點心</a></li>
+                            <div class="row justify-content-center text-center mx-auto py-3" style="max-width: 1400px;">
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#breakfast"><img src="./mc_menu/menu-bf.avif"
+                                            class="menu me-2">早餐</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#cpseries"><img src="./mc_menu/menu-setmeal.avif"
+                                            class="menu me-2">超值系列</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#selectedseries"><img src="./mc_menu/menu-super.avif"
+                                            class="menu me-2">極選系列</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#setmeal"><img
+                                            src="./mc_menu/menu-subset.webp" class="menu me-2">超值配餐</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#happymeal"><img src="./mc_menu/menu-happymeal.avif"
+                                            class="menu me-2">Happy Meal®</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#sharemeal"><img src="./mc_menu/menu-sharemeal.avif"
+                                            class="menu me-2">麥當勞分享盒</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#oneplusone"><img src="./mc_menu/menu-oneplusone.avif"
+                                            class="menu me-2">1+1星級點</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#mcafe"><img
+                                            src="./mc_menu/menu-mycoff.avif" class="menu me-2">McCafé®</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item"
+                                        href="foodmap.html#beverage"><img src="./mc_menu/menu-berver.avif"
+                                            class="menu me-2">飲料</a></li>
+                                <li class="col-lg-3 p-3"><a class="dropdown-item" href="foodmap.html#dessert"><img
+                                            src="./mc_menu/menu-dessert.avif" class="menu me-2">點心</a></li>
                             </div>
-                            <li class="w-100"><hr class="dropdown-divider"></li>
-                            <li class="w-100 pb-3"><a class="dropdown-item text-center" href="foodmap.html">瀏覽全部</a></li>
+                            <li class="w-100">
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="w-25 pb-3 mx-auto"><a class="dropdown-item text-center"
+                                    href="foodmap.html">瀏覽全部</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="startorder.html">開始點餐</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="startorder.html">開始點餐</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="restlocate.html">餐廳位置</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">關於麥當勞</a></li>
                 </ul>
@@ -111,17 +124,28 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="d-flex overflow-auto mb-3 gap-2 pb-2 category-scroll" id="category-buttons">
-                    <button class="btn btn-warning rounded-pill text-nowrap active fw-bold" onclick="filterMenu('all')">全部</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('breakfast')">早餐</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('cpseries')">超值系列</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('selected')">極選系列</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('setmeal')">超值配餐</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('happymeal')">Happy Meal</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('sharebox')">分享盒</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('oneplusone')">1+1星級點</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('mcafe')">McCafé</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('beverage')">飲料</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('dessert')">點心</button>
+                    <button class="btn btn-warning rounded-pill text-nowrap active fw-bold"
+                        onclick="filterMenu('all')">全部</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('breakfast')">早餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('cpseries')">超值系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('selected')">極選系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('setmeal')">超值配餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('happymeal')">Happy Meal</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('sharebox')">分享盒</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('oneplusone')">1+1星級點</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('mcafe')">McCafé</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('beverage')">飲料</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
+                        onclick="filterMenu('dessert')">點心</button>
                 </div>
 
                 <div class="row g-3" id="product-list"></div>
@@ -132,7 +156,7 @@
                     <div class="card-header bg-danger text-white">
                         <h5 class="mb-0"><i class="bi bi-cart4 me-2"></i>我的餐點</h5>
                     </div>
-                    
+
                     <div class="card-body d-flex flex-column p-0">
                         <div class="p-3 bg-light border-bottom">
                             <label for="store-select" class="form-label fw-bold text-dark mb-1">
@@ -140,7 +164,7 @@
                             </label>
                             <select class="form-select border-danger" id="store-select">
                                 <option value="" selected disabled>-- 請選擇 --</option>
-                                </select>
+                            </select>
                         </div>
 
                         <div id="cart-items" class="flex-grow-1 overflow-auto p-3" style="min-height: 200px;">
@@ -208,7 +232,7 @@
             { id: "bf4", name: "巧克力榛果可頌", price: 50, category: "breakfast", img: "./mc_menu/foodpic/bf4.avif" },
             { id: "bf5", name: "雞塊鬆餅大早餐", price: 115, category: "breakfast", img: "./mc_menu/foodpic/bf5.avif" },
             { id: "bf6", name: "番茄嫩蛋焙果堡", price: 71, category: "breakfast", img: "./mc_menu/foodpic/bf6.avif" },
-            
+
             // --- 超值系列 ---
             { id: "cp1", name: "大麥克", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp1.avif" },
             { id: "cp2", name: "雙層牛肉吉事堡", price: 75, category: "cpseries", img: "./mc_menu/foodpic/cp2.avif" },
@@ -216,12 +240,12 @@
             { id: "cp4", name: "雙層四盎司牛肉堡", price: 135, category: "cpseries", img: "./mc_menu/foodpic/cp4.avif" },
             { id: "cp5", name: "勁辣鷄腿堡", price: 81, category: "cpseries", img: "./mc_menu/foodpic/cp5.avif" },
             { id: "cp6", name: "麥克鷄塊(10塊)", price: 110, category: "cpseries", img: "./mc_menu/foodpic/cp6.avif" },
-            
+
             // --- 極選系列 ---
             { id: "se1", name: "蕈菇安格斯牛肉堡", price: 135, category: "selected", img: "./mc_menu/foodpic/signature1.avif" },
             { id: "se2", name: "帕瑪森主廚鷄腿堡", price: 130, category: "selected", img: "./mc_menu/foodpic/signature2.avif" },
             { id: "se3", name: "BLT 安格斯牛肉堡", price: 125, category: "selected", img: "./mc_menu/foodpic/signature3.avif" },
-           
+
             // --- 超值配餐 ---
             { id: "sm1", name: "經典配餐:中薯+$38冷/熱飲", price: 65, category: "setmeal", img: "./mc_menu/foodpic/set1.avif" },
             { id: "sm2", name: "清爽配餐:沙拉+$38冷/熱飲", price: 70, category: "setmeal", img: "./mc_menu/foodpic/set2.avif" },
@@ -238,7 +262,7 @@
             { id: "sb1", name: "麥克鷄塊分享盒(20塊)", price: 275, category: "sharebox", img: "./mc_menu/foodpic/share1.avif" },
             { id: "sb2", name: "麥脆鷄腿分享盒(6塊)", price: 508, category: "sharebox", img: "./mc_menu/foodpic/share2.avif" },
             { id: "sb3", name: "鷄塊鷄腿分享盒", price: 601, category: "sharebox", img: "./mc_menu/foodpic/share3.avif" },
-            
+
             // --- 1+1星級點 ---
             { id: "op1", name: "吉事漢堡+紅茶(熱)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one1.avif" },
             { id: "op2", name: "鷄塊(4塊)+無糖綠茶(小)", price: 50, category: "oneplusone", img: "./mc_menu/foodpic/one2.avif" },
@@ -263,7 +287,7 @@
             { id: "dr5", name: "雪碧(中)", price: 38, category: "beverage", img: "./mc_menu/foodpic/drink5.avif" },
             { id: "dr6", name: "無糖綠茶 (冰)", price: 44, category: "beverage", img: "./mc_menu/foodpic/drink6.avif" },
 
-             // --- 範例：點心 ---
+            // --- 範例：點心 ---
             { id: "sn1", name: "水果袋", price: 43, category: "dessert", img: "./mc_menu/foodpic/de1.avif" },
             { id: "sn2", name: "玉米湯", price: 46, category: "dessert", img: "./mc_menu/foodpic/de2.avif" },
             { id: "sn3", name: "OREO冰炫風", price: 60, category: "dessert", img: "./mc_menu/foodpic/de3.avif" },
@@ -276,12 +300,12 @@
 
         function renderMenu(filter = 'all') {
             const productList = document.getElementById('product-list');
-            productList.innerHTML = ''; 
+            productList.innerHTML = '';
 
             menuData.forEach(item => {
                 if (filter !== 'all' && item.category !== filter) return;
                 const col = document.createElement('div');
-                col.className = 'col-6 col-md-4 col-lg-3'; 
+                col.className = 'col-6 col-md-4 col-lg-3';
                 col.innerHTML = `
                     <div class="card h-100 border-0 shadow-sm hover-shadow">
                         <img src="${item.img}" class="card-img-top" alt="${item.name}">
@@ -303,15 +327,15 @@
         function addToCart(id) {
             const item = menuData.find(p => p.id === id);
             const existingItem = cart.find(i => i.id === id);
-            if (existingItem) { 
+            if (existingItem) {
                 //數量上限判斷
                 if (existingItem.qty >= 99) {
                     alert("單一商品數量最多 99 個喔！");
                     return;
                 }
-                existingItem.qty++; 
-            } else { 
-                cart.push({ ...item, qty: 1 }); 
+                existingItem.qty++;
+            } else {
+                cart.push({ ...item, qty: 1 });
             }
             updateCartUI();
         }
@@ -319,7 +343,7 @@
         function updateCartUI() {
             const cartContainer = document.getElementById('cart-items');
             const totalEl = document.getElementById('total-price');
-            
+
             if (cart.length === 0) {
                 cartContainer.innerHTML = `<div class="text-center text-muted mt-5"><i class="bi bi-basket display-1 opacity-50"></i><p class="mt-2">您的購物車是空的</p></div>`;
                 totalEl.innerText = "$0";
@@ -346,7 +370,7 @@
                 `;
             });
             html += '</ul>';
-            
+
             cartContainer.innerHTML = html;
             totalEl.innerText = "$" + total;
         }
@@ -398,37 +422,38 @@
             const payload = {
                 items: cart.map(item => ({ id: item.id, qty: item.qty })),
                 //將餐廳名稱傳給後端
-                store: selectedStore 
+                store: selectedStore
             };
-            
-            const scriptURL = "https://script.google.com/macros/s/AKfycbz92WApKsE3wkgMaAPhuX3WtVuCtknobsObpOQm-f4DntQuSOu7LrREoeo5qMjUM5Sj/exec"; 
+
+            const scriptURL = "https://script.google.com/macros/s/AKfycbz92WApKsE3wkgMaAPhuX3WtVuCtknobsObpOQm-f4DntQuSOu7LrREoeo5qMjUM5Sj/exec";
 
             fetch(scriptURL, {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: { "Content-Type": "text/plain;charset=utf-8" }
             })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === "success"){
-                    alert("✅ 訂單成功！\n\n取餐店：" + selectedStore + "\n訂單編號：" + data.orderId + "\n確認金額：$" + data.serverTotal);
-                    cart = [];
-                    updateCartUI();
-                } else {
-                    alert("❌ 發生錯誤：" + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("連線發生問題，請稍後再試。");
-            })
-            .finally(() => {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        alert("✅ 訂單成功！\n\n取餐店：" + selectedStore + "\n訂單編號：" + data.orderId + "\n確認金額：$" + data.serverTotal);
+                        cart = [];
+                        updateCartUI();
+                    } else {
+                        alert("❌ 發生錯誤：" + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("連線發生問題，請稍後再試。");
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                });
         }
 
         renderMenu();
     </script>
 </body>
+
 </html>
