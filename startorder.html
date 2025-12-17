@@ -28,7 +28,15 @@
         .hover-shadow:hover {
             transform: translateY(-3px);
             transition: all 0.3s ease;
-            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+
+        .sticky-cart {
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            z-index: 900;
         }
 
         .btn-quantity {
@@ -45,130 +53,114 @@
         .category-scroll::-webkit-scrollbar {
             height: 5px;
         }
-
         .category-scroll::-webkit-scrollbar-thumb {
             background: #ccc;
             border-radius: 10px;
-        }
-
-        .cart-badge {
-            font-size: 0.75rem;
-            transform: translate(25%, -25%);
         }
     </style>
 </head>
 
 <body>
-    <nav class="shadow navbar navbar-expand-lg navbar-light bg-light bg-white py-1">
+    <nav class="shadow navbar navbar-expand-lg navbar-light bg-light bg-white py-1 d-flex justify-content-end ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="./mc_img/MCLogo.png" class="w-50" alt=""></a>
-            <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div>
+                <a class="navbar-brand" href="index.html"><img src="./mc_img/MCLogo.png" class="w-50" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
             <div class="collapse navbar-collapse topnav" id="navbarNav">
-                <ul class="navbar-nav align-items-center me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav">
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" id="foodMenu" role="button"
-                            data-bs-toggle="dropdown">了解美味</a>
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            了解美味
+                        </a>
                         <ul class="dropdown-menu w-100 border-0 shadow custom-accordion-menu"
                             aria-labelledby="foodMenu">
                             <div class="d-flex flex-wrap justify-content-center text-center mx-auto py-3"
                                 style="max-width: 1400px;">
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#breakfast"><img
-                                            src="./mc_menu/menu-bf.avif" class="menu me-2">早餐</a></li>
-                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#cpseries"><img
-                                            src="./mc_menu/menu-setmeal.avif" class="menu me-2">超值系列</a></li>
-                                <li class="w-100">
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li class="w-100 pb-3"><a class="dropdown-item text-center" href="foodmap.html">瀏覽全部</a>
-                                </li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#breakfast"><img src="./mc_menu/menu-bf.avif" class="menu me-2">早餐</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#cpseries"><img src="./mc_menu/menu-setmeal.avif" class="menu me-2">超值系列</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#selectedseries"><img src="./mc_menu/menu-super.avif" class="menu me-2">極選系列</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#setmeal"><img src="./mc_menu/menu-subset.webp" class="menu me-2">超值配餐</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#happymeal"><img src="./mc_menu/menu-happymeal.avif" class="menu me-2">Happy Meal®</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#sharemeal"><img src="./mc_menu/menu-sharemeal.avif" class="menu me-2">麥當勞分享盒</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#oneplusone"><img src="./mc_menu/menu-oneplusone.avif" class="menu me-2">1+1星級點</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#mcafe"><img src="./mc_menu/menu-mycoff.avif" class="menu me-2">McCafé®</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#beverage"><img src="./mc_menu/menu-berver.avif" class="menu me-2">飲料</a></li>
+                                <li class="p-3"><a class="dropdown-item" href="foodmap.html#dessert"><img src="./mc_menu/menu-dessert.avif" class="menu me-2">點心</a></li>
                             </div>
+                            <li class="w-100"><hr class="dropdown-divider"></li>
+                            <li class="w-100 pb-3"><a class="dropdown-item text-center" href="foodmap.html">瀏覽全部</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" href="startorder.html">開始點餐</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="startorder.html">開始點餐</a></li>
                     <li class="nav-item"><a class="nav-link" href="restlocate.html">餐廳位置</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">關於麥當勞</a></li>
                 </ul>
-                <div class="d-flex align-items-center">
-                    <button class="btn btn-outline-danger position-relative rounded-pill px-3" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">
-                        <i class="bi bi-cart4 me-1"></i> 購物車
-                        <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge"
-                            id="nav-cart-count">0</span>
-                    </button>
-                </div>
             </div>
         </div>
     </nav>
 
     <div class="container" style="padding-top: 20px; padding-bottom: 50px;" id="sec">
         <h1 class="text-center mb-4 fw-bold">線上點餐</h1>
+
         <div class="row">
-            <div class="col-12">
+            <div class="col-lg-8">
                 <div class="d-flex overflow-auto mb-3 gap-2 pb-2 category-scroll" id="category-buttons">
-                    <button class="btn btn-warning rounded-pill text-nowrap active fw-bold"
-                        onclick="filterMenu('all')">全部</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('breakfast')">早餐</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('cpseries')">超值系列</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('selected')">極選系列</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('setmeal')">超值配餐</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('happymeal')">Happy Meal</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('sharebox')">分享盒</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('oneplusone')">1+1星級點</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('mcafe')">McCafé</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('beverage')">飲料</button>
-                    <button class="btn btn-outline-dark rounded-pill text-nowrap"
-                        onclick="filterMenu('dessert')">點心</button>
+                    <button class="btn btn-warning rounded-pill text-nowrap active fw-bold" onclick="filterMenu('all')">全部</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('breakfast')">早餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('cpseries')">超值系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('selected')">極選系列</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('setmeal')">超值配餐</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('happymeal')">Happy Meal</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('sharebox')">分享盒</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('oneplusone')">1+1星級點</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('mcafe')">McCafé</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('beverage')">飲料</button>
+                    <button class="btn btn-outline-dark rounded-pill text-nowrap" onclick="filterMenu('dessert')">點心</button>
                 </div>
+
                 <div class="row g-3" id="product-list"></div>
             </div>
-        </div>
-    </div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel"
-        style="width: 350px;">
-        <div class="offcanvas-header bg-danger text-white">
-            <h5 class="offcanvas-title" id="offcanvasCartLabel"><i class="bi bi-cart4 me-2"></i>我的餐點</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-        </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="card shadow border-0 sticky-cart">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0"><i class="bi bi-cart4 me-2"></i>我的餐點</h5>
+                    </div>
+                    
+                    <div class="card-body d-flex flex-column p-0">
+                        <div class="p-3 bg-light border-bottom">
+                            <label for="store-select" class="form-label fw-bold text-dark mb-1">
+                                <i class="bi bi-geo-alt-fill text-danger"></i> 請選擇取餐餐廳
+                            </label>
+                            <select class="form-select border-danger" id="store-select">
+                                <option value="" selected disabled>-- 請選擇 --</option>
+                                </select>
+                        </div>
 
-        <div class="offcanvas-body d-flex flex-column p-0">
-            <div class="p-3 bg-light border-bottom">
-                <label for="store-select" class="form-label fw-bold text-dark">
-                    <i class="bi bi-geo-alt-fill text-danger"></i> 請選擇取餐餐廳
-                </label>
-                <select class="form-select border-danger" id="store-select">
-                    <option value="" selected disabled>-- 請點擊選擇 --</option>
-                </select>
-            </div>
+                        <div id="cart-items" class="flex-grow-1 overflow-auto p-3" style="min-height: 200px;">
+                            <div class="text-center text-muted mt-5">
+                                <i class="bi bi-basket display-1 opacity-50"></i>
+                                <p class="mt-2">您的購物車是空的</p>
+                            </div>
+                        </div>
 
-            <div id="cart-items" class="flex-grow-1 overflow-auto p-3">
-                <div class="text-center text-muted mt-5">
-                    <i class="bi bi-basket display-1 opacity-50"></i>
-                    <p class="mt-2">您的購物車是空的</p>
+                        <div class="bg-light p-3 border-top">
+                            <div class="d-flex justify-content-between h5 mb-3">
+                                <span>總金額：</span>
+                                <span class="fw-bold text-danger" id="total-price">$0</span>
+                            </div>
+                            <button class="btn btn-warning w-100 py-2 fw-bold shadow-sm" onclick="submitOrder()">
+                                送出訂單 <i class="bi bi-arrow-right-circle ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="bg-light p-3 border-top">
-                <div class="d-flex justify-content-between h5 mb-3">
-                    <span>總金額：</span>
-                    <span class="fw-bold text-danger" id="total-price">$0</span>
-                </div>
-                <button class="btn btn-warning w-100 py-2 fw-bold shadow-sm" onclick="submitOrder()">
-                    送出訂單 <i class="bi bi-arrow-right-circle ms-1"></i>
-                </button>
             </div>
         </div>
     </div>
@@ -179,7 +171,7 @@
     </button>
 
     <script>
-        // --- 1. 初始化邏輯 ---
+        // --- 1. 回到頂部按鈕邏輯 ---
         let mybutton = document.getElementById("btn-back-to-top");
         window.onscroll = function () { scrollFunction(); };
         function scrollFunction() {
@@ -191,7 +183,7 @@
         }
         function backToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        // --- 2. 餐廳資料 (與地圖頁一致) ---
+        // --- 2. 餐廳資料 ---
         const stores = [
             "麥當勞-台中公益二餐廳",
             "麥當勞-台中文心二餐廳",
@@ -207,7 +199,7 @@
             storeSelect.appendChild(option);
         });
 
-        // --- 3. 商品資料 ---
+        // --- 3. 點餐系統核心邏輯 ---
         const menuData = [
             // --- 早餐 ---
             { id: "bf1", name: "無敵豬肉滿福堡加蛋", price: 78, category: "breakfast", img: "./mc_menu/foodpic/bf1.avif" },
@@ -278,19 +270,18 @@
             { id: "sn4", name: "大蛋捲冰淇淋", price: 32, category: "dessert", img: "./mc_menu/foodpic/de4.avif" },
             { id: "sn5", name: "四季沙拉", price: 56, category: "dessert", img: "./mc_menu/foodpic/de5.avif" },
             { id: "sn6", name: "奶昔(香草風味)", price: 69, category: "dessert", img: "./mc_menu/foodpic/de6.avif" }
-
         ];
 
         let cart = [];
 
         function renderMenu(filter = 'all') {
             const productList = document.getElementById('product-list');
-            productList.innerHTML = '';
+            productList.innerHTML = ''; 
 
             menuData.forEach(item => {
                 if (filter !== 'all' && item.category !== filter) return;
                 const col = document.createElement('div');
-                col.className = 'col-6 col-md-4 col-lg-3';
+                col.className = 'col-6 col-md-4 col-lg-3'; 
                 col.innerHTML = `
                     <div class="card h-100 border-0 shadow-sm hover-shadow">
                         <img src="${item.img}" class="card-img-top" alt="${item.name}">
@@ -312,22 +303,34 @@
         function addToCart(id) {
             const item = menuData.find(p => p.id === id);
             const existingItem = cart.find(i => i.id === id);
-            if (existingItem) { existingItem.qty++; } else { cart.push({ ...item, qty: 1 }); }
+            if (existingItem) { 
+                //數量上限判斷
+                if (existingItem.qty >= 99) {
+                    alert("單一商品數量最多 99 個喔！");
+                    return;
+                }
+                existingItem.qty++; 
+            } else { 
+                cart.push({ ...item, qty: 1 }); 
+            }
             updateCartUI();
         }
 
         function updateCartUI() {
             const cartContainer = document.getElementById('cart-items');
             const totalEl = document.getElementById('total-price');
-            const navBadge = document.getElementById('nav-cart-count');
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<div class="text-center text-muted mt-5"><i class="bi bi-basket display-1 opacity-50"></i><p class="mt-2">您的購物車是空的</p></div>`;
+                totalEl.innerText = "$0";
+                return;
+            }
 
-            let totalQty = 0;
-            let total = 0;
             let html = '<ul class="list-group list-group-flush">';
+            let total = 0;
 
             cart.forEach((item, index) => {
                 total += item.price * item.qty;
-                totalQty += item.qty;
                 html += `
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 border-bottom">
                         <div class="me-2" style="font-size: 0.9rem; width: 50%;">
@@ -343,17 +346,18 @@
                 `;
             });
             html += '</ul>';
-
-            if (cart.length === 0) cartContainer.innerHTML = `<div class="text-center text-muted mt-5"><i class="bi bi-basket display-1 opacity-50"></i><p class="mt-2">您的購物車是空的</p></div>`;
-            else cartContainer.innerHTML = html;
-
+            
+            cartContainer.innerHTML = html;
             totalEl.innerText = "$" + total;
-            navBadge.innerText = totalQty;
-            navBadge.classList.add('animate__animated', 'animate__bounceIn');
-            setTimeout(() => navBadge.classList.remove('animate__animated', 'animate__bounceIn'), 500);
         }
 
         function changeQty(index, delta) {
+            //數量上限判斷
+            if (delta > 0 && cart[index].qty >= 99) {
+                alert("單一商品數量最多 99 個喔！");
+                return;
+            }
+
             cart[index].qty += delta;
             if (cart[index].qty <= 0) cart.splice(index, 1);
             updateCartUI();
@@ -375,14 +379,14 @@
                 return;
             }
 
-            // ★ 新增：檢查是否有選擇餐廳
+            //檢查是否選擇了餐廳
             const storeSelect = document.getElementById('store-select');
             const selectedStore = storeSelect.value;
             if (!selectedStore) {
                 alert("請先選擇「取餐餐廳」才能送出訂單喔！");
-                // 讓購物車捲動到最上方，提示使用者選擇
-                document.querySelector('.offcanvas-body').scrollTop = 0;
                 storeSelect.focus();
+                storeSelect.classList.add('border-3'); // 加粗紅框提醒
+                setTimeout(() => storeSelect.classList.remove('border-3'), 2000);
                 return;
             }
 
@@ -393,43 +397,38 @@
 
             const payload = {
                 items: cart.map(item => ({ id: item.id, qty: item.qty })),
-                // ★ 新增：將餐廳名稱傳給後端
-                store: selectedStore
+                //將餐廳名稱傳給後端
+                store: selectedStore 
             };
-
-            const scriptURL = "https://script.google.com/macros/s/AKfycbz92WApKsE3wkgMaAPhuX3WtVuCtknobsObpOQm-f4DntQuSOu7LrREoeo5qMjUM5Sj/exec";
+            
+            const scriptURL = "https://script.google.com/macros/s/AKfycbz92WApKsE3wkgMaAPhuX3WtVuCtknobsObpOQm-f4DntQuSOu7LrREoeo5qMjUM5Sj/exec"; 
 
             fetch(scriptURL, {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: { "Content-Type": "text/plain;charset=utf-8" }
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasCart'));
-                        if (offcanvas) offcanvas.hide();
-
-                        alert("✅ 訂單成功！\n\n取餐店：" + selectedStore + "\n訂單編號：" + data.orderId + "\n確認金額：$" + data.serverTotal);
-
-                        cart = [];
-                        updateCartUI();
-                    } else {
-                        alert("❌ 發生錯誤：" + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("連線發生問題，請稍後再試。");
-                })
-                .finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                });
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "success"){
+                    alert("✅ 訂單成功！\n\n取餐店：" + selectedStore + "\n訂單編號：" + data.orderId + "\n確認金額：$" + data.serverTotal);
+                    cart = [];
+                    updateCartUI();
+                } else {
+                    alert("❌ 發生錯誤：" + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("連線發生問題，請稍後再試。");
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            });
         }
 
         renderMenu();
     </script>
 </body>
-
 </html>
