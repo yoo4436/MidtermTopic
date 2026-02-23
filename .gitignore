@@ -1,0 +1,8 @@
+# --- IDE 相關設定 (忽略整個資料夾) ---
+/.metadata/
+/Servers/
+.idea/
+.vscode/
+
+# --- ---
+.gitattributes
