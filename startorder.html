@@ -51,6 +51,7 @@
             border-radius: 10px;
         }
     </style>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body>
@@ -200,6 +201,31 @@
     </button>
 
     <script>
+        let customerLineId = ""; // 用來存客人的 LINE ID
+
+        async function initializeLiff() {
+            try {
+                await liff.init({ liffId: "填入你剛剛申請的_LIFF_ID" });
+
+                if (!liff.isLoggedIn()) {
+                    liff.login(); // 沒登入就逼他登入
+                } else {
+                    const profile = await liff.getProfile();
+                    customerLineId = profile.userId; // 成功抓到客人的 ID！
+                    console.log("使用者已登入，ID:", customerLineId);
+                }
+            } catch (error) {
+                console.error("LIFF 初始化失敗", error);
+            }
+        }
+
+        // 網頁載入時立刻執行
+        window.onload = function() {
+            initializeLiff();
+            // 原本的邏輯
+            scrollFunction();
+        };
+
         // --- 1. 回到頂部按鈕邏輯 ---
         let mybutton = document.getElementById("btn-back-to-top");
         window.onscroll = function () { scrollFunction(); };
@@ -433,13 +459,20 @@
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> 處理中...';
 
+            // 確認已經有拿到 LINE ID 才能送單
+            if (!lineUserId) {
+                alert("正在讀取您的 LINE 帳號資訊，請稍後再試！\n(若持續發生，請重新整理網頁)");
+                return;
+            }
+
             const payload = {
                 items: cart.map(item => ({ id: item.id, qty: item.qty })),
                 store: selectedStore,
-                phone: phone
+                phone: phone,
+                lineUserId: customerLineId // 把客人ID傳給後端
             };
 
-            const scriptURL = "https://script.google.com/macros/s/AKfycbz92WApKsE3wkgMaAPhuX3WtVuCtknobsObpOQm-f4DntQuSOu7LrREoeo5qMjUM5Sj/exec";
+            const scriptURL = "https://script.google.com/macros/s/AKfycbz5OpKRc-PwJr8_3ZeiTEAqrs9JqOcP2PQZc4eOsqXQLm7tPsWKuHn9zt54lvRq7p2c/exec";
 
             fetch(scriptURL, {
                 method: "POST",
