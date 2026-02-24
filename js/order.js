@@ -1,11 +1,11 @@
 let customerLineId = ""; // 用來存客人的 LINE ID
 
-// 【第一步：網頁一載入，立刻鎖住按鈕】
+// 【網頁一載入，立刻鎖住按鈕】
 // 抓取你畫面中那個呼叫 submitOrder() 的按鈕
 const submitBtn = document.querySelector('button[onclick="submitOrder()"]');
 
 if (submitBtn) {
-    submitBtn.disabled = true; // 鎖住不讓按
+    submitBtn.disabled = true; // 鎖住不給按
     submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> 載入 LINE 資訊中...'; 
 }
 
@@ -19,6 +19,11 @@ async function initializeLiff() {
             const profile = await liff.getProfile();
             customerLineId = profile.userId; // 成功抓到客人的 ID！
             console.log("使用者已登入，ID:", customerLineId);
+
+            if (submitBtn) {
+                submitBtn.disabled = false; // 解除鎖定
+                submitBtn.innerHTML = '送出訂單 <i class="bi bi-arrow-right-circle ms-1"></i>'; // 恢復文字
+            }
         }
     } catch (error) {
         console.error("LIFF 初始化失敗", error);
