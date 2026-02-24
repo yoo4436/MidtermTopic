@@ -460,10 +460,12 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> 處理中...';
 
             // 確認已經有拿到 LINE ID 才能送單
-            if (!lineUserId) {
+            if (!customerLineId) {
                 alert("正在讀取您的 LINE 帳號資訊，請稍後再試！\n(若持續發生，請重新整理網頁)");
                 return;
             }
+
+            alert("準備送單，檢查抓到的 LINE ID: " + customerLineId);
 
             const payload = {
                 items: cart.map(item => ({ id: item.id, qty: item.qty })),
@@ -472,7 +474,7 @@
                 lineUserId: customerLineId // 把客人ID傳給後端
             };
 
-            const scriptURL = "https://script.google.com/macros/s/AKfycbz5OpKRc-PwJr8_3ZeiTEAqrs9JqOcP2PQZc4eOsqXQLm7tPsWKuHn9zt54lvRq7p2c/exec";
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxDiQWoLMLKiuGuDtvAXmcuhCgP6L0RwqqJRWmvE0IFp5zZjyLrVh0KSkCZX7zpxBSx/exec";
 
             fetch(scriptURL, {
                 method: "POST",
