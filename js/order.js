@@ -28,8 +28,8 @@ async function initializeLiff() {
 // 網頁載入時立刻執行
 window.onload = function() {
     initializeLiff();
-    // 原本的邏輯
     scrollFunction();
+    renderMenu();
 };
 
 // --- 1. 回到頂部按鈕邏輯 ---
@@ -306,5 +306,3 @@ function submitOrder() {
             btn.innerHTML = originalText;
         });
 }
-
-renderMenu();
