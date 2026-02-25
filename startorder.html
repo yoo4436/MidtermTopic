@@ -199,6 +199,17 @@
         <i class="bi bi-arrow-up"></i>
     </button>
     
+    <div id="toast-container" class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1100; pointer-events: none;"></div>
+
+    <button id="floating-cart-btn" class="btn btn-warning rounded-circle shadow-lg position-fixed"
+        style="bottom: 90px; right: 30px; width: 60px; height: 60px; z-index: 1000; display: none;"
+        onclick="scrollToCart()">
+        <i class="bi bi-cart-fill fs-3 text-dark"></i>
+        <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="font-size: 0.8rem;">
+            0
+        </span>
+    </button>
+
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script src="./js/order.js"></script>
 </body>

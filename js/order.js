@@ -180,6 +180,9 @@ function addToCart(id) {
         cart.push({ ...item, qty: 1 });
     }
     updateCartUI();
+
+    // 顯示 Toast 通知客人！
+    showToast(`✅ ${item.name} 已加入！`);
 }
 
 function updateCartUI() {
@@ -215,6 +218,9 @@ function updateCartUI() {
 
     cartContainer.innerHTML = html;
     totalEl.innerText = "$" + total;
+
+    // 更新右下角浮動購物車的數字與跳動動畫
+    updateFloatingCart();
 }
 
 function changeQty(index, delta) {
@@ -310,4 +316,58 @@ function submitOrder() {
             btn.disabled = false;
             btn.innerHTML = originalText;
         });
+}
+
+// ==========================================
+// 4. UX 特效與互動 (Toast 與浮動購物車)
+// ==========================================
+
+// 顯示上方 Toast 通知
+function showToast(msg) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'custom-toast shadow d-flex align-items-center fw-bold text-light';
+    toast.innerHTML = msg;
+    
+    container.appendChild(toast);
+
+    // 延遲一點點時間加上 show class，讓動畫生效
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // 2.5 秒後自動消失並移除元素
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
+}
+
+// 更新浮動購物車按鈕
+function updateFloatingCart() {
+    const btn = document.getElementById('floating-cart-btn');
+    const badge = document.getElementById('cart-badge');
+    if (!btn || !badge) return;
+
+    // 計算購物車內所有商品總數量
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    badge.innerText = totalQty;
+
+    if (totalQty > 0) {
+        btn.style.display = 'block'; // 顯示按鈕
+        
+        // 觸發跳動動畫的超實用小技巧 (先移除 class，再重新加上去)
+        btn.classList.remove('cart-bounce');
+        void btn.offsetWidth; // 強制瀏覽器重繪 (Reflow)
+        btn.classList.add('cart-bounce');
+    } else {
+        btn.style.display = 'none'; // 購物車空了就隱藏
+    }
+}
+
+// 點擊浮動按鈕，平滑滾動到購物車結帳區
+function scrollToCart() {
+    const cartSection = document.getElementById('cart-items');
+    if (cartSection) {
+        // 讓網頁平滑地滾動到購物車的位置
+        cartSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 }

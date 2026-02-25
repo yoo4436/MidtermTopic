@@ -334,3 +334,29 @@ div > .pp {
         font-size: 0.85rem;
     }
 }
+
+/* Toast 通知特效 */
+    .custom-toast {
+        background: rgba(33, 37, 41, 0.95); /* 深灰色背景 */
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        margin-top: 10px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 帶有彈性的出現動畫 */
+    }
+    .custom-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 購物車跳動特效 (加入商品時觸發) */
+    @keyframes bounceIn {
+        0%   { transform: scale(1); }
+        50%  { transform: scale(1.2) translateY(-10px); }
+        100% { transform: scale(1); }
+    }
+    .cart-bounce {
+        animation: bounceIn 0.4s ease-out;
+    }
